@@ -1,0 +1,50 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config ./bin/www",
+    "start:production": "node ./bin/www"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "*",
+    "@types/cookie-parser": "*",
+    "@types/cors": "*",
+    "@types/csurf": "*",
+    "@types/jsonwebtoken": "*",
+    "@types/morgan": "*",
+    "@types/nodemon": "*",
+    "@types/pg": "*",
+    "bcrypt": "*",
+    "bcryptjs": "*",
+    "cookie-parser": "*",
+    "cors": "*",
+    "csurf": "*",
+    "dotenv": "*",
+    "dotenv-cli": "*",
+    "express": "*",
+    "express-async-handler": "*",
+    "express-validator": "*",
+    "helmet": "*",
+    "jsonwebtoken": "*",
+    "morgan": "*",
+    "nodemon": "*",
+    "per-env": "*",
+    "pg": "*",
+    "sequelize": "*",
+    "sequelize-cli": "*"
+  },
+  "devDependencies": {
+    "@types/express": "*",
+    "@types/node": "*",
+    "ts-node": "*",
+    "typescript": "*"
+  }
+}
