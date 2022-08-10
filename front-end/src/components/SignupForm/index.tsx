@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from "../../store/session";
-import { RootState, useAppDispatch } from "../../store/index";
-import { User } from "../../CustomTypings";
-import "./SignupForm.css";
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import * as sessionActions from '../../store/session';
+import { RootState, useAppDispatch } from '../../store/index';
+import { User } from '../../CustomTypings';
+import './SignupForm.css';
 
 const SignupForm = ({ user }: { user: User | null }) => {
   const dispatch = useAppDispatch();
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState([] as string[]);
 
   if (user) {
@@ -23,14 +25,21 @@ const SignupForm = ({ user }: { user: User | null }) => {
     if (password === confirmPassword) {
       setErrors([]);
       return dispatch(
-        sessionActions.signup({ email, username, password })
+        sessionActions.signup({
+          firstName,
+          lastName,
+          email,
+          phoneNumber,
+          password,
+        })
       ).catch(async (res: any) => {
         const data = await res.json();
+        console.log(data);
         if (data && data.errors) setErrors(data.errors);
       });
     }
     return setErrors([
-      "Confirm Password field must be the same as the Password field",
+      'Confirm Password field must be the same as the Password field',
     ]);
   };
 
@@ -44,6 +53,24 @@ const SignupForm = ({ user }: { user: User | null }) => {
         </ul>
       ) : null}
       <label>
+        First Name
+        <input
+          type="text"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Last Name
+        <input
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
+      </label>
+      <label>
         Email
         <input
           type="text"
@@ -53,11 +80,11 @@ const SignupForm = ({ user }: { user: User | null }) => {
         />
       </label>
       <label>
-        Username
+        Phone Number
         <input
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
           required
         />
       </label>

@@ -28,7 +28,6 @@ const ProfileButton = ({ user }: Props) => {
       </button>
       {showMenu && user && (
         <ul className="ProfileDropdown">
-          <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
             <button onClick={() => dispatch(sessionActions.logout())}>Log Out</button>

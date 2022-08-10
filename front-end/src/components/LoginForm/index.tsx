@@ -37,7 +37,7 @@ const LoginForm = ({ user }: { user: User | null }) => {
         </ul>
       ) : null}
       <label>
-        Username or Email
+        Email
         <input
           type="text"
           value={credential}
