@@ -7,6 +7,7 @@ import { useAppDispatch } from './store/index';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import NewUserForm from './components/NewUserForm';
+import MainCalendar from './components/MainCalendar';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route exact path="/first-time-client">
             <NewUserForm />
+          </Route>
+          <Route exact path="/calendar">
+            <MainCalendar />
           </Route>
         </Switch>
       )}
