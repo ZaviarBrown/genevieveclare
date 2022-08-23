@@ -50,6 +50,11 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.BOOLEAN,
         allowNull: false,
       },
+      firstTime: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
     },
     {
       defaultScope: {
@@ -93,8 +98,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   User.prototype.toSafeObject = function () {
     // remember, this cannot be an arrow function
-    const { id, firstName, lastName, email, phoneNumber, admin } = this; // context will be the User instance
-    return { id, firstName, lastName, email, phoneNumber, admin };
+    const { id, firstName, lastName, email, phoneNumber, admin, firstTime } =
+      this; // context will be the User instance
+    return { id, firstName, lastName, email, phoneNumber, admin, firstTime };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());

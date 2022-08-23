@@ -13,6 +13,7 @@ module.exports = {
           phoneNumber: '425-555-5555',
           hashedPassword: bcrypt.hashSync('password'),
           admin: false,
+          firstTime: false,
         },
         {
           email: 'geni@user.io',
@@ -21,6 +22,7 @@ module.exports = {
           phoneNumber: '206-555-5555',
           hashedPassword: bcrypt.hashSync('password'),
           admin: true,
+          firstTime: false,
         },
       ],
       {}
