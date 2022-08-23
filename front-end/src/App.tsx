@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Navigation from './components/Navigation';
 import { Route, Switch } from 'react-router-dom';
 import * as sessionActions from './store/session';
@@ -8,7 +8,6 @@ import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 import NewUserForm from './components/NewUserForm';
 import MainCalendar from './components/MainCalendar';
-import { useSelector } from 'react-redux';
 import { User } from './CustomTypings';
 
 function App() {
@@ -25,31 +24,25 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && user.current && user.current.firstTime ? (
-        <Route>
-          <NewUserForm />
-        </Route>
-      ) : (
-        isLoaded && (
+      {isLoaded && (
           <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-              <LoginForm />
-            </Route>
-            <Route exact path="/signup">
-              <SignupForm />
-            </Route>
-            <Route exact path="/first-time-client">
-              <NewUserForm />
-            </Route>
-            <Route exact path="/calendar">
-              <MainCalendar />
-            </Route>
-          </Switch>
-        )
-      )}
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/login">
+                <LoginForm />
+              </Route>
+              <Route exact path="/signup">
+                <SignupForm />
+              </Route>
+              <Route exact path="/first-time-client">
+                <NewUserForm />
+              </Route>
+              <Route exact path="/calendar">
+                <MainCalendar />
+              </Route>
+            </Switch>
+        )} 
     </>
   );
 }
