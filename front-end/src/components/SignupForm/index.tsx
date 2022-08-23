@@ -17,7 +17,7 @@ const SignupForm = ({ user }: { user: User | null }) => {
   const [errors, setErrors] = useState([] as string[]);
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/first-time-client" />;
   }
 
   const handleSubmit = (e: any) => {

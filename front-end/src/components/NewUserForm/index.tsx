@@ -11,9 +11,9 @@ const NewUserForm = ({ user }: { user: User | null }) => {
 
   const [errors, setErrors] = useState([] as string[]);
 
-  // if (user) {
-  //   return <Redirect to="/" />;
-  // }
+  if (user && !user.firstTime) {
+    return <Redirect to="/" />;
+  }
 
   const handleSubmit = (e: any) => {
     e.preventDefault();

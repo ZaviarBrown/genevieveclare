@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
-import ProfileButton from "./ProfileButton";
-import "./Navigation.css";
-import { RootState } from "../../store";
-import { User } from "../../CustomTypings";
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import ProfileButton from './ProfileButton';
+import './Navigation.css';
+import { RootState } from '../../store';
+import { User } from '../../CustomTypings';
 
 interface Props {
   isLoaded: boolean;
@@ -13,10 +13,13 @@ interface Props {
 const Navigation = ({ isLoaded, user }: Props) => {
   return (
     <div className="NavCont">
-      <NavLink exact to="/">
-        Home
-      </NavLink>
-      {!user && (
+      {isLoaded && (
+        <NavLink exact to="/">
+          Home
+        </NavLink>
+      )}
+
+      {isLoaded && !user && (
         <>
           <NavLink exact to="/login">
             Log In

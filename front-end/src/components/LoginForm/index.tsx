@@ -1,19 +1,20 @@
-import { useState } from "react";
-import * as sessionActions from "../../store/session";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { RootState, useAppDispatch } from "../../store/index";
-import { User } from "../../CustomTypings";
-import "./LoginForm.css";
+import { useState } from 'react';
+import * as sessionActions from '../../store/session';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { RootState, useAppDispatch } from '../../store/index';
+import { User } from '../../CustomTypings';
+import './LoginForm.css';
 
 const LoginForm = ({ user }: { user: User | null }) => {
   const dispatch = useAppDispatch();
-  const [credential, setCredential] = useState("");
-  const [password, setPassword] = useState("");
+  const [credential, setCredential] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   if (user) {
-    return <Redirect to="/" />;
+    if (!user.firstTime) return <Redirect to="/" />;
+    else return <Redirect to="/first-time-client" />;
   }
 
   const handleSubmit = (e: any) => {

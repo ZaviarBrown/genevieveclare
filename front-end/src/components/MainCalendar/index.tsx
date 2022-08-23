@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import * as sessionActions from '../../store/session';
+// import * as sessionActions from '../../store/session';
 import { connect } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
 import Calendar from 'react-calendar';
@@ -7,9 +7,9 @@ import 'react-calendar/dist/Calendar.css';
 import './Calendar.css';
 
 const MainCalendar = () => {
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const [date, setDate] = useState(new Date());
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   return (
     <div className="container">
