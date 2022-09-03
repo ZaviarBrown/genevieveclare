@@ -5,7 +5,7 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const Dev = () => {
+const FunFacts = () => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {
@@ -14,7 +14,7 @@ const Dev = () => {
     return setErrors([]);
   };
   return (
-    <form className="form7" onSubmit={handleSubmit}>
+    <form className="form6" onSubmit={handleSubmit}>
       {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
@@ -24,9 +24,11 @@ const Dev = () => {
       ) : null}
 
       <div className="selection">
-        {' '}
-        Upload a photo of yourself if you want me to know what I'm working with!
-        <input type="file"></input>
+        Anything you'd like me to know?
+        <label>
+          {' '}
+          <input></input>
+        </label>
       </div>
 
       <button type="submit">Ready to go!</button>
@@ -35,5 +37,5 @@ const Dev = () => {
 };
 
 export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
+  FunFacts
 );

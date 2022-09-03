@@ -2,9 +2,30 @@ import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { connect } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
-
 import './FormNav.css';
+import {
+  ServiceOptions,
+  ColorHistory,
+  ChemHair,
+  StartingColor,
+  TimeSlots,
+  FunFacts,
+  Upload,
+} from '../NewClientForm';
 
+const formArr = [
+  ServiceOptions,
+  ColorHistory,
+  ChemHair,
+  StartingColor,
+  TimeSlots,
+  FunFacts,
+  Upload,
+];
+
+const changePages = () => {
+  return formArr[0];
+};
 const FormNav = () => {
   console.log(localStorage);
   /** Saving form data
@@ -19,7 +40,7 @@ const FormNav = () => {
         <button className="arrow">Back</button>
         <button className="arrow">Next</button>
       </div>
-      <div className="content">yes</div>
+      <div className="content">{changePages()}</div>
       <div className="save">
         {/* This will be on individual questions */}
         <button className="arrow">Save</button>

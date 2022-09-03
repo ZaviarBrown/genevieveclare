@@ -1,7 +1,7 @@
 import './Home.css';
 import { RootState } from '../../store/index';
 import { connect } from 'react-redux';
-import NewUserForm from '../NewUserForm';
+import NewUserForm from '../OldNewUserForm';
 import { User } from '../../CustomTypings';
 import { useEffect } from 'react';
 

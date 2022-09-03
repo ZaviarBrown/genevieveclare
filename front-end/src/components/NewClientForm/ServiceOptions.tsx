@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const Dev = () => {
+interface ServiceProps {
+  name: string;
+}
+
+const ServiceOptions = (props: ServiceProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {
@@ -56,6 +60,6 @@ const Dev = () => {
   );
 };
 
-export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
-);
+export default connect((state: RootState) => ({
+  user: state.session.user,
+}))(ServiceOptions);

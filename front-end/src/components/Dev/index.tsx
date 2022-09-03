@@ -2,35 +2,59 @@ import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { connect } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
-
 import './Dev.css';
+import {
+  ServiceOptions,
+  ColorHistory,
+  ChemHair,
+  StartingColor,
+  TimeSlots,
+  FunFacts,
+  Upload,
+} from '../NewClientForm';
+
+const forms = [
+  <ServiceOptions name="hello" />,
+  <ColorHistory />,
+  <ChemHair />,
+  <StartingColor />,
+  <TimeSlots />,
+  <FunFacts />,
+  <Upload />,
+];
+
+/** Saving form data
+ * Pass function to each prop to run on save
+ * function runs and saves all state variables to local storage
+ * Local storage can save on every change
+ * Once form is complete, dispatch all info
+ */
 
 const Dev = () => {
-  const [errors, setErrors] = useState([] as string[]);
+  const [page, setPage] = useState(0);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const changePages = (num: number) => {
+    const newNum = page + num;
 
-    return setErrors([]);
+    if (newNum < forms.length && newNum >= 0) setPage(page + num);
+    else newNum < 0 ? setPage(0) : setPage(forms.length - 1);
   };
   return (
-    <form className="form7" onSubmit={handleSubmit}>
-      {errors.length ? (
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-      ) : null}
-
-      <div className="selection">
-        {' '}
-        Upload a photo of yourself if you want me to know what I'm working with!
-        <input type="file"></input>
+    <div className="container">
+      <div className="nav">
+        <button className="arrow" onClick={() => changePages(-1)}>
+          Back
+        </button>
+        <button className="arrow" onClick={() => changePages(1)}>
+          Next
+        </button>
       </div>
-
-      <button type="submit">Ready to go!</button>
-    </form>
+      <div className="content">{forms[page]}</div>
+      <div className="save">
+        {/* This will be on individual questions */}
+        <button className="arrow">Save</button>
+      </div>
+    </div>
   );
 };
 

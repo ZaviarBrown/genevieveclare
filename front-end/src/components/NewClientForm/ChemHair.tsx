@@ -5,7 +5,7 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const Dev = () => {
+const ChemHair = () => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {
@@ -50,12 +50,11 @@ const Dev = () => {
         </label>
       </div>
 
-
       <button type="submit">Ready to go!</button>
     </form>
   );
 };
 
 export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
+  ChemHair
 );

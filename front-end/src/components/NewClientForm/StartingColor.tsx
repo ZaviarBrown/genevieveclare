@@ -5,7 +5,7 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const Dev = () => {
+const StartingColor = () => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {
@@ -14,7 +14,7 @@ const Dev = () => {
     return setErrors([]);
   };
   return (
-    <form className="form6" onSubmit={handleSubmit}>
+    <form className="form4" onSubmit={handleSubmit}>
       {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
@@ -23,12 +23,27 @@ const Dev = () => {
         </ul>
       ) : null}
 
-
       <div className="selection">
-        Anything you'd like me to know?
+        What is your starting hair color?
         <label>
           {' '}
-          <input></input>
+          Black/Dark Brown<input type="checkbox"></input>
+        </label>
+        <label>
+          {' '}
+          Brown<input type="checkbox"></input>
+        </label>
+        <label>
+          {' '}
+          Light Brown/Dark Blonde<input type="checkbox"></input>
+        </label>
+        <label>
+          {' '}
+          Blonde<input type="checkbox"></input>
+        </label>
+        <label>
+          {' '}
+          Gray/White<input type="checkbox"></input>
         </label>
       </div>
 
@@ -38,5 +53,5 @@ const Dev = () => {
 };
 
 export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
+  StartingColor
 );
