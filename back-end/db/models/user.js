@@ -134,6 +134,9 @@ module.exports = (sequelize, DataTypes) => {
       hashedPassword,
       admin: false,
     });
+
+    await user.createNote({ noteText: '' });
+
     return await User.scope('currentUser').findByPk(user.id);
   };
   return User;
