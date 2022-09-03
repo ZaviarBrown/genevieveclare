@@ -1,0 +1,44 @@
+.container {
+  border: 1px solid black;
+  margin: 10px auto;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  grid-template-areas:
+    'nav'
+    'content'
+    'save';
+}
+/* 
+row: 1fr 8fr 1fr
+col: 9fr 1fr
+nav nav
+content content
+saveErrors save
+ */
+
+.nav {
+  grid-area: nav;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  margin: 10px 20px;
+  background-color: var(--primary);
+  border-width: 2px;
+  border-color: var(--primary-dark);
+  border-radius: 3px;
+}
+
+.save {
+  grid-area: save;
+  display: flex;
+  justify-content: right;
+}
+
+.content {
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

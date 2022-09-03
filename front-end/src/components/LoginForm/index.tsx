@@ -13,8 +13,7 @@ const LoginForm = ({ user }: { user: User | null }) => {
   const [errors, setErrors] = useState([]);
 
   if (user) {
-    if (!user.firstTime) return <Redirect to="/" />;
-    else return <Redirect to="/first-time-client" />;
+    return <Redirect to="/" />;
   }
 
   const handleSubmit = (e: any) => {

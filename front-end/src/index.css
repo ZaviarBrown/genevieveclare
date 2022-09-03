@@ -1,0 +1,33 @@
+:root {
+  /* color */
+  --primary: #ffccbc;
+  --primary-light: #ffffee;
+  --primary-dark: #cb9b8c;
+  --secondary: #558b2f;
+  --secondary-light: #85bb5c;
+  --secondary-dark: #255d00;
+  /* --accent: #ffb74d;
+  --error: #ff5252; */
+  /* text */
+  --text-on-background: #000000;
+  --text-on-error: #ffffff;
+  --text-on-primary: #d1c4e9;
+  /* background */
+  /* --primary-background: #ffffff;
+  --secondary-background: #eeeeee; */
+  /* sizing */
+  --input-border-radius: 0.3rem;
+  --card-border-radius: 1rem;
+}
+
+body {
+  background-color: var(--primary-light);
+}
+
+/* form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  place-items: center center;
+
+} */
