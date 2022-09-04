@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { connect } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
-import './Dev.css';
+import './FormCommander.css';
 import {
   ServiceOptions,
   ColorHistory,
@@ -13,7 +13,7 @@ import {
   Upload,
 } from '../NewClientForm';
 
-const forms = [
+const NewClient = [
   <ServiceOptions name="hello" />,
   <ColorHistory />,
   <ChemHair />,
@@ -23,23 +23,25 @@ const forms = [
   <Upload />,
 ];
 
-/** Saving form data
- * Pass function to each prop to run on save
- * function runs and saves all state variables to local storage
- * Local storage can save on every change
- * Once form is complete, dispatch all info
- */
+const forms: any = {
+  NewClient,
+};
 
-const Dev = () => {
+interface FCProps {
+  name: string;
+}
+
+const FormCommander = (props: FCProps) => {
   const [page, setPage] = useState(0);
+  const form = forms[props.name];
 
   const changePages = (num: number) => {
     const newNum = page + num;
 
-    if (newNum < forms.length && newNum >= 0) setPage(page + num);
-    else newNum < 0 ? setPage(0) : setPage(forms.length - 1);
+    if (newNum < form.length && newNum >= 0) setPage(page + num);
+    else newNum < 0 ? setPage(0) : setPage(form.length - 1);
   };
-	
+
   return (
     <div className="container">
       <div className="nav">
@@ -50,7 +52,7 @@ const Dev = () => {
           Next
         </button>
       </div>
-      <div className="content">{forms[page]}</div>
+      <div className="content">{form[page]}</div>
       <div className="save">
         {/* This will be on individual questions */}
         <button className="arrow">Save</button>
@@ -60,5 +62,5 @@ const Dev = () => {
 };
 
 export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
+  FormCommander
 );
