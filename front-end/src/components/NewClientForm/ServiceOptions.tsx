@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { connect } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
@@ -9,16 +9,44 @@ interface ServiceProps {
   name: string;
 }
 
+interface FormData {
+  haircuts: string;
+  color: string;
+  vivid: string;
+  hb: string;
+  tg: string;
+}
+
 const ServiceOptions = (props: ServiceProps) => {
   const [errors, setErrors] = useState([] as string[]);
+  const [formData, setFormData] = useState({
+    haircuts: false,
+    color: false,
+    vivid: false,
+    hb: false,
+    tg: false,
+  });
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  useEffect(() => {
+    if (localStorage.ServiceOptions) {
+      setFormData(JSON.parse(localStorage.ServiceOptions));
+    }
+  }, []);
 
-    return setErrors([]);
+  useEffect(() => {
+    localStorage.ServiceOptions = JSON.stringify(formData);
+  }, [formData]);
+
+  const toggle = (input: any) => {
+    let newData: any = { ...formData };
+
+    newData[input.name] = !newData[input.name];
+
+    setFormData(newData);
   };
+
   return (
-    <form className="form1" onSubmit={handleSubmit}>
+    <form className="form1">
       {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
@@ -33,29 +61,57 @@ const ServiceOptions = (props: ServiceProps) => {
           <label>
             {' '}
             Haircuts
-            <input type="checkbox"></input>
+            <input
+              type="checkbox"
+              name="haircuts"
+              checked={formData.haircuts}
+              onChange={(e) => toggle(e.target)}
+            ></input>
           </label>
           <label>
             {' '}
-            Color<input type="checkbox"></input>
+            Color
+            <input
+              type="checkbox"
+              name="color"
+              checked={formData.color}
+              onChange={(e) => toggle(e.target)}
+            ></input>
           </label>
           <label>
             {' '}
-            Vivid<input type="checkbox"></input>
+            Vivid
+            <input
+              type="checkbox"
+              name="vivid"
+              checked={formData.vivid}
+              onChange={(e) => toggle(e.target)}
+            ></input>
           </label>
         </div>
         <div className="checkBoxDiv">
           <label>
             {' '}
-            Highlights/Balayage<input type="checkbox"></input>
+            Highlights/Balayage
+            <input
+              type="checkbox"
+              name="hb"
+              checked={formData.hb}
+              onChange={(e) => toggle(e.target)}
+            ></input>
           </label>
           <label>
             {' '}
-            Toner/Gloss<input type="checkbox"></input>
+            Toner/Gloss
+            <input
+              type="checkbox"
+              name="tg"
+              checked={formData.tg}
+              onChange={(e) => toggle(e.target)}
+            ></input>
           </label>
         </div>
       </div>{' '}
-      <button type="submit">Ready to go!</button>
     </form>
   );
 };
