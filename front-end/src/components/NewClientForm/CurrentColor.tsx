@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { connect } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store/index';
-
-import './Dev.css';
 import { restoreLocal, saveLocal } from './utils';
+import './Dev.css';
 
 interface ColorProps {
   name: string;
@@ -132,6 +128,4 @@ const CurrentColor = (props: ColorProps) => {
   );
 };
 
-export default connect((state: RootState) => ({ user: state.session.user }))(
-  CurrentColor
-);
+export default CurrentColor;

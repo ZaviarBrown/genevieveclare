@@ -1,8 +1,5 @@
-import { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { connect } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store/index';
-
+import { useEffect, useState } from 'react';
+import { restoreLocal, saveLocal } from './utils';
 import './Dev.css';
 
 interface FunProps {
@@ -10,22 +7,17 @@ interface FunProps {
 }
 
 const FunFacts = (props: FunProps) => {
-  const [errors, setErrors] = useState([] as string[]);
+  // const [errors, setErrors] = useState([] as string[]);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-
-    return setErrors([]);
-  };
   return (
-    <form className="form6" onSubmit={handleSubmit}>
-      {errors.length ? (
+    <form className="form6">
+      {/* {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-      ) : null}
+      ) : null} */}
 
       <div className="selection">
         Anything you'd like me to know?
@@ -40,6 +32,4 @@ const FunFacts = (props: FunProps) => {
   );
 };
 
-export default connect((state: RootState) => ({ user: state.session.user }))(
-  FunFacts
-);
+export default FunFacts;
