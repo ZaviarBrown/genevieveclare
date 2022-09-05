@@ -1,7 +1,7 @@
 import ServiceOptions from './ServiceOptions';
 import ColorHistory from './ColorHistory';
 import ChemHair from './ChemHair';
-import StartingColor from './StartingColor';
+import CurrentColor from './CurrentColor';
 import TimeSlots from './TimeSlots';
 import FunFacts from './FunFacts';
 import Upload from './Upload';
@@ -10,7 +10,7 @@ export {
   ServiceOptions,
   ColorHistory,
   ChemHair,
-  StartingColor,
+  CurrentColor,
   TimeSlots,
   FunFacts,
   Upload,
