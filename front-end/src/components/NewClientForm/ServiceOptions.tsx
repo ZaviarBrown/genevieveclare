@@ -1,31 +1,22 @@
 import { useEffect, useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { connect } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store/index';
-
+import { hasChanged } from './utils';
 import './Dev.css';
 
 interface ServiceProps {
   name: string;
 }
 
-interface FormData {
-  haircuts: string;
-  color: string;
-  vivid: string;
-  hb: string;
-  tg: string;
-}
+const defaultState: any = {
+  haircuts: false,
+  color: false,
+  vivid: false,
+  hb: false,
+  tg: false,
+};
 
 const ServiceOptions = (props: ServiceProps) => {
   const [errors, setErrors] = useState([] as string[]);
-  const [formData, setFormData] = useState({
-    haircuts: false,
-    color: false,
-    vivid: false,
-    hb: false,
-    tg: false,
-  });
+  const [formData, setFormData] = useState(defaultState);
 
   useEffect(() => {
     if (localStorage.ServiceOptions) {
@@ -34,7 +25,9 @@ const ServiceOptions = (props: ServiceProps) => {
   }, []);
 
   useEffect(() => {
-    localStorage.ServiceOptions = JSON.stringify(formData);
+    if (hasChanged(defaultState, formData))
+      localStorage.ServiceOptions = JSON.stringify(formData);
+    else localStorage.removeItem('ServiceOptions');
   }, [formData]);
 
   const toggle = (input: any) => {
@@ -116,6 +109,4 @@ const ServiceOptions = (props: ServiceProps) => {
   );
 };
 
-export default connect((state: RootState) => ({
-  user: state.session.user,
-}))(ServiceOptions);
+export default ServiceOptions;

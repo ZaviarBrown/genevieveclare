@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const Upload = () => {
+interface UploadProps {
+  name: string;
+}
+
+const Upload = (props: UploadProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {

@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const StartingColor = () => {
+interface ColorProps {
+  name: string;
+}
+
+const StartingColor = (props: ColorProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {

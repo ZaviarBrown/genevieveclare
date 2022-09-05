@@ -14,13 +14,13 @@ import {
 } from '../NewClientForm';
 
 const NewClient = [
-  <ServiceOptions name="hello" />,
-  <ColorHistory />,
-  <ChemHair />,
-  <StartingColor />,
-  <TimeSlots />,
-  <FunFacts />,
-  <Upload />,
+  <ServiceOptions name="ServiceOptions" />,
+  <ColorHistory name="ColorHistory" />,
+  <ChemHair name="ChemHair" />,
+  <StartingColor name="StartingColor" />,
+  <TimeSlots name="TimeSlots" />,
+  <FunFacts name="FunFacts" />,
+  <Upload name="Upload" />,
 ];
 
 const forms: any = {

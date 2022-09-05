@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const FunFacts = () => {
+interface FunProps {
+  name: string;
+}
+
+const FunFacts = (props: FunProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {

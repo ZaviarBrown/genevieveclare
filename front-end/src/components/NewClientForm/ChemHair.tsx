@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const ChemHair = () => {
+interface ChemProps {
+  name: string;
+}
+
+const ChemHair = (props: ChemProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {

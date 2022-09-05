@@ -5,7 +5,11 @@ import { RootState, useAppDispatch } from '../../store/index';
 
 import './Dev.css';
 
-const TimeSlots = () => {
+interface TimeProps {
+  name: string;
+}
+
+const TimeSlots = (props: TimeProps) => {
   const [errors, setErrors] = useState([] as string[]);
 
   const handleSubmit = (e: any) => {
