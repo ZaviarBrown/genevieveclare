@@ -15,7 +15,7 @@ const defaultState: any = {
 };
 
 const ServiceOptions = (props: ServiceProps) => {
-  const [errors, setErrors] = useState([] as string[]);
+  // const [errors, setErrors] = useState([] as string[]);
   const [formData, setFormData] = useState(defaultState);
 
   useEffect(() => {
@@ -40,13 +40,13 @@ const ServiceOptions = (props: ServiceProps) => {
 
   return (
     <form className="form1">
-      {errors.length ? (
+      {/* {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-      ) : null}
+      ) : null} */}
       <div className="selection">
         Which services do you see yourself using?
         <label>(Select all that you might want)</label>

@@ -45,10 +45,6 @@ const Dev = () => {
   const changePages = (num: number) => {
     const newNum = page + num;
 
-    console.log(forms[2]);
-
-    console.log(localStorage);
-
     if (newNum < forms.length && newNum >= 0) setPage(page + num);
     else newNum < 0 ? setPage(0) : setPage(forms.length - 1);
   };

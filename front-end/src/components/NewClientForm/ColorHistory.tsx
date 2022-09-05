@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-
-import './Dev.css';
 import { hasChanged } from './utils';
+import './Dev.css';
 
 interface HistoryProps {
   name: string;
@@ -15,10 +14,8 @@ const defaultState: any = {
   home: false,
 };
 
-const defaultLocation: any = {};
-
 const ColorHistory = (props: HistoryProps) => {
-  const [errors, setErrors] = useState([] as string[]);
+  // const [errors, setErrors] = useState([] as string[]);
   const [formData, setFormData] = useState(defaultState);
 
   useEffect(() => {
@@ -33,7 +30,7 @@ const ColorHistory = (props: HistoryProps) => {
     if (hasChanged(defaultState, testData))
       localStorage.ColorHistory = JSON.stringify(formData);
     else localStorage.removeItem('ColorHistory');
-  });
+  }, [formData]);
 
   const setAgo = (input: string) => {
     let newData: any = { ...formData };
@@ -56,13 +53,13 @@ const ColorHistory = (props: HistoryProps) => {
 
   return (
     <form className="form2">
-      {errors.length ? (
+      {/* {errors.length ? (
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-      ) : null}
+      ) : null} */}
       <div className="selection">
         Have you had color before?
         <div className="checkBoxDiv">
