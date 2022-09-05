@@ -8,6 +8,13 @@ interface FunProps {
 
 const FunFacts = (props: FunProps) => {
   // const [errors, setErrors] = useState([] as string[]);
+  const [formData, setFormData] = useState('');
+
+  useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
+
+  useEffect(() => {
+    saveLocal({ fact: '' }, { fact: formData }, props.name);
+  }, [formData, props.name]);
 
   return (
     <form className="form6">
@@ -23,11 +30,12 @@ const FunFacts = (props: FunProps) => {
         Anything you'd like me to know?
         <label>
           {' '}
-          <input></input>
+          <input
+            value={formData}
+            onChange={(e) => setFormData(e.target.value)}
+          ></input>
         </label>
       </div>
-
-      <button type="submit">Ready to go!</button>
     </form>
   );
 };

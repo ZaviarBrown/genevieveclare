@@ -1,31 +1,31 @@
-import { useEffect, useState } from 'react';
-import { restoreLocal, saveLocal } from './utils';
+import { useState } from 'react';
 import './Dev.css';
 
 interface UploadProps {
   name: string;
 }
 
+//TODO: Allow for multiple image uploads
+
 const Upload = (props: UploadProps) => {
-  // const [errors, setErrors] = useState([] as string[]);
+  const [formData, setFormData] = useState('');
+
+  const showImages = (e: any) => {
+    setFormData(URL.createObjectURL(e.target.files[0]));
+  };
 
   return (
     <form className="form7">
-      {/* {errors.length ? (
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-      ) : null} */}
-
       <div className="selection">
         {' '}
         Upload a photo of yourself if you want me to know what I'm working with!
-        <input type="file"></input>
+        <input
+          type="file"
+          // value={formData}
+          onChange={(e) => showImages(e)}
+        ></input>
+        {!formData.length ? null : <img src={formData} alt="test" />}
       </div>
-
-      <button type="submit">Ready to go!</button>
     </form>
   );
 };
