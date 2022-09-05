@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { hasChanged } from './utils';
+import { saveLocal, restoreLocal } from './utils';
 import './Dev.css';
 
 interface ServiceProps {
@@ -18,18 +18,6 @@ const ServiceOptions = (props: ServiceProps) => {
   // const [errors, setErrors] = useState([] as string[]);
   const [formData, setFormData] = useState(defaultState);
 
-  useEffect(() => {
-    if (localStorage.ServiceOptions) {
-      setFormData(JSON.parse(localStorage.ServiceOptions));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (hasChanged(defaultState, formData))
-      localStorage.ServiceOptions = JSON.stringify(formData);
-    else localStorage.removeItem('ServiceOptions');
-  }, [formData]);
-
   const toggle = (input: any) => {
     let newData: any = { ...formData };
 
@@ -37,6 +25,12 @@ const ServiceOptions = (props: ServiceProps) => {
 
     setFormData(newData);
   };
+
+  useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
+
+  useEffect(() => {
+    saveLocal(defaultState, formData, props.name);
+  }, [formData, props.name]);
 
   return (
     <form className="form1">

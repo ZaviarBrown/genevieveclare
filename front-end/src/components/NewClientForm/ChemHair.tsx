@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { hasChanged } from './utils';
+import { restoreLocal, saveLocal } from './utils';
 import './Dev.css';
 
 interface ChemProps {
@@ -18,20 +18,6 @@ const ChemHair = (props: ChemProps) => {
   // const [errors, setErrors] = useState([] as string[]);
   const [formData, setFormData] = useState(defaultState);
 
-  useEffect(() => {
-    if (localStorage.ChemHair) {
-      setFormData(JSON.parse(localStorage.ChemHair));
-    }
-  }, []);
-
-  useEffect(() => {
-    let testData = { ...formData };
-    testData.yes = false;
-    if (hasChanged(defaultState, testData))
-      localStorage.ChemHair = JSON.stringify(formData);
-    else localStorage.removeItem('ChemHair');
-  }, [formData]);
-
   const toggle = (input: any) => {
     let newData: any = { ...formData };
     newData[input.name] = !newData[input.name];
@@ -42,6 +28,14 @@ const ChemHair = (props: ChemProps) => {
 
     setFormData(newData);
   };
+
+  useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
+
+  useEffect(() => {
+    let testData = { ...formData };
+    testData.yes = false;
+    saveLocal(defaultState, testData, props.name);
+  }, [formData, props.name]);
 
   return (
     <form className="form3">

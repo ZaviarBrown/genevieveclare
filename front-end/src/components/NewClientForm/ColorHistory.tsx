@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { hasChanged } from './utils';
+import { saveLocal, restoreLocal } from './utils';
 import './Dev.css';
 
 interface HistoryProps {
@@ -17,20 +17,6 @@ const defaultState: any = {
 const ColorHistory = (props: HistoryProps) => {
   // const [errors, setErrors] = useState([] as string[]);
   const [formData, setFormData] = useState(defaultState);
-
-  useEffect(() => {
-    if (localStorage.ColorHistory) {
-      setFormData(JSON.parse(localStorage.ColorHistory));
-    }
-  }, []);
-
-  useEffect(() => {
-    let testData = { ...formData };
-    testData.yes = false;
-    if (hasChanged(defaultState, testData))
-      localStorage.ColorHistory = JSON.stringify(formData);
-    else localStorage.removeItem('ColorHistory');
-  }, [formData]);
 
   const setAgo = (input: string) => {
     let newData: any = { ...formData };
@@ -50,6 +36,14 @@ const ColorHistory = (props: HistoryProps) => {
 
     setFormData(newData);
   };
+
+  useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
+
+  useEffect(() => {
+    let testData = { ...formData };
+    testData.yes = false;
+    saveLocal(defaultState, testData, props.name);
+  }, [formData, props.name]);
 
   return (
     <form className="form2">
