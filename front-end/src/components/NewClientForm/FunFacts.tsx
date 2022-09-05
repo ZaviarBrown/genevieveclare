@@ -13,7 +13,7 @@ const FunFacts = (props: FunProps) => {
   useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
 
   useEffect(() => {
-    saveLocal({ fact: '' }, { fact: formData }, props.name);
+    localStorage[props.name] = JSON.stringify(formData);
   }, [formData, props.name]);
 
   return (

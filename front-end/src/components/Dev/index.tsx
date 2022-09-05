@@ -20,7 +20,7 @@ const forms = [
   <CurrentColor name="CurrentColor" />,
   <TimeSlots name="TimeSlots" />,
   <FunFacts name="FunFacts" />,
-  <Upload name="Upload" />,
+  // <Upload name="Upload" />,
 ];
 
 /** Saving form data
@@ -38,6 +38,7 @@ const forms = [
 
 const Dev = () => {
   const [page, setPage] = useState(0);
+  const [submit, setSubmit] = useState(false);
   // const [formData, setFormData] = useState({});
 
   // console.log(otherLocal);
@@ -49,21 +50,28 @@ const Dev = () => {
     else newNum < 0 ? setPage(0) : setPage(forms.length - 1);
   };
 
+  const checkStorage = () => {
+    const pageName = forms[page].props.name;
+    if (forms.length - 1 === page && localStorage[pageName]) setSubmit(true);
+    if (localStorage[pageName]) changePages(1);
+  };
+
   return (
     <div className="container">
       <div className="nav">
         <button className="arrow" onClick={() => changePages(-1)}>
           Back
         </button>
-        <button className="arrow" onClick={() => changePages(1)}>
+        <button className="arrow" onClick={checkStorage}>
           Next
         </button>
       </div>
       <div className="content">{forms[page]}</div>
-      <div className="save">
-        {/* This will be on individual questions */}
-        <button className="arrow">Save</button>
-      </div>
+      {submit ? (
+        <div className="save">
+          <button className="arrow">Save</button>
+        </div>
+      ) : null}
     </div>
   );
 };
