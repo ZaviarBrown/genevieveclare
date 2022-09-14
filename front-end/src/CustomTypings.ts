@@ -4,7 +4,7 @@ export interface User {
   lastName: string;
   phoneNumber: string;
   email: string;
-  isAdmin: boolean;
+  admin: boolean;
   firstTime: boolean;
 }
 

@@ -30,6 +30,7 @@ const Navigation = ({ isLoaded, user }: Props) => {
         </>
       )}
       {isLoaded && user && <ProfileButton user={user} />}
+      {isLoaded && user && user.admin && <span>Manage</span>}
     </div>
   );
 };

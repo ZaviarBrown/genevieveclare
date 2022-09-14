@@ -2,17 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from './store/index'
-import { restoreCSRF, csrfFetch } from "./store/csrf";
-import * as sessionActions from "./store/session";
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/index';
+import { restoreCSRF, csrfFetch } from './store/csrf';
+import * as sessionActions from './store/session';
+
+// TODO: Remove this line - development only
+const tab = window.location.href.split('/');
+document.title = tab[tab.length - 1];
 
 declare global {
-  interface Window { csrfFetch: any; store: any; sessionActions: any, __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any }
+  interface Window {
+    csrfFetch: any;
+    store: any;
+    sessionActions: any;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+  }
 }
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   restoreCSRF();
 
   window.csrfFetch = csrfFetch;
@@ -23,9 +32,9 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   );
 }

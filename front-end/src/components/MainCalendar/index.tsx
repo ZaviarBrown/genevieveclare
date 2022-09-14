@@ -10,7 +10,7 @@ const MainCalendar = () => {
   // const dispatch = useAppDispatch();
   const [date, setDate] = useState(new Date());
   // const [errors, setErrors] = useState([]);
-
+  console.log(date);
   return (
     <div className="container">
       <Calendar
