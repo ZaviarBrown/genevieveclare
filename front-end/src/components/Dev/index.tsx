@@ -1,81 +1,121 @@
 import { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { connect } from 'react-redux';
-import { RootState, useAppDispatch } from '../../store/index';
 import './Dev.css';
-import {
-  ServiceOptions,
-  ColorHistory,
-  ChemHair,
-  CurrentColor,
-  TimeSlots,
-  FunFacts,
-  Upload,
-} from '../NewClientForm';
 
-const forms = [
-  <ServiceOptions name="ServiceOptions" />,
-  <ColorHistory name="ColorHistory" />,
-  <ChemHair name="ChemHair" />,
-  <CurrentColor name="CurrentColor" />,
-  <TimeSlots name="TimeSlots" />,
-  <FunFacts name="FunFacts" />,
-  // <Upload name="Upload" />,
-];
-
-/** Saving form data
- * Pass function to each prop to run on save
- * function runs and saves all state variables to local storage
- * Local storage can save on every change
- *
- * Start with current local storage object
- * On page change, spread object and check for any new/updated info
- * Add all new to form object
- *
- * Once form is complete, dispatch all info
- *
- */
-
-const Dev = () => {
-  const [page, setPage] = useState(0);
-  const [submit, setSubmit] = useState(false);
-  // const [formData, setFormData] = useState({});
-
-  // console.log(otherLocal);
-
-  const changePages = (num: number) => {
-    const newNum = page + num;
-
-    if (newNum < forms.length && newNum >= 0) setPage(page + num);
-    else newNum < 0 ? setPage(0) : setPage(forms.length - 1);
-  };
-
-  const checkStorage = () => {
-    const pageName = forms[page].props.name;
-    if (forms.length - 1 === page && localStorage[pageName]) setSubmit(true);
-    if (localStorage[pageName]) changePages(1);
-  };
-
-  return (
-    <div className="container">
-      <div className="nav">
-        <button className="arrow" onClick={() => changePages(-1)}>
-          Back
-        </button>
-        <button className="arrow" onClick={checkStorage}>
-          Next
-        </button>
-      </div>
-      <div className="content">{forms[page]}</div>
-      {submit ? (
-        <div className="save">
-          <button className="arrow">Save</button>
-        </div>
-      ) : null}
-    </div>
-  );
+const allServices = {
+  haircut: {
+    select: false,
+    buzz: {
+      select: false,
+    },
+    short: {
+      select: false,
+      shoulderUp: false,
+    },
+    long: {
+      select: false,
+      collarDown: false,
+    },
+    creative: {
+      select: false,
+    },
+  },
+  allOverColor: {
+    select: false,
+    rootsOnly: {
+      select: false,
+    },
+  },
+  highlights: {
+    select: false,
+    partial: {
+      select: false,
+    },
+    full: {
+      select: false,
+    },
+  },
+  balayage: {
+    select: false,
+    partial: {
+      select: false,
+    },
+    full: {
+      select: false,
+    },
+  },
+  vivids: {
+    select: false,
+    requireConsult: true,
+  },
+  colorCorrections: {
+    select: false,
+    requireConsult: true,
+  },
+  styling: {
+    select: false,
+    blowout: {
+      select: false,
+    },
+    specialEvent: {
+      select: false,
+      prom: {
+        select: false,
+      },
+      homeComing: {
+        select: false,
+      },
+      seniorPics: {
+        select: false,
+      },
+      formal: {
+        select: false,
+      },
+      bridal: {
+        select: false,
+        requireConsult: true,
+      },
+    },
+  },
+  extensions: {
+    select: false,
+    full: {
+      select: false,
+      requireConsult: true,
+    },
+    moveUp: {
+      select: false,
+    },
+    removal: {
+      select: false,
+    },
+  },
+  babyLights: {
+    select: false,
+    partial: {
+      select: false,
+    },
+    full: {
+      select: false,
+    },
+  },
+  bleachTone: {
+    select: false,
+    growOuts: {
+      select: false,
+      requireConsult: true,
+    },
+  },
+  quiet: {
+    select: false,
+  },
 };
 
-export default connect((state: RootState) => ({ user: state.session.user }))(
-  Dev
-);
+const serviceList = Object.keys(allServices);
+
+const Dev = () => {
+  const [formData, setFormData] = useState(allServices);
+
+  return <div className="container"></div>;
+};
+
+export default Dev;

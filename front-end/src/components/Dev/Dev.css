@@ -1,4 +1,4 @@
-.container {
+/* .container {
   border: 1px solid black;
   margin: 10px auto;
   display: grid;
@@ -8,13 +8,6 @@
     'content'
     'save';
 }
-/* 
-row: 1fr 8fr 1fr
-col: 9fr 1fr
-nav nav
-content content
-saveErrors save
- */
 
 .nav {
   grid-area: nav;
@@ -41,4 +34,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
+
+/* row: 1fr 8fr 1fr
+col: 9fr 1fr
+nav nav
+content content
+saveErrors save */
