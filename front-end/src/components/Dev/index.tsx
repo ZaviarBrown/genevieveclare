@@ -1,121 +1,35 @@
 import { useState } from 'react';
 import './Dev.css';
+import { allServices, selections } from './utils';
 
-const allServices = {
-  haircut: {
-    select: false,
-    buzz: {
-      select: false,
-    },
-    short: {
-      select: false,
-      shoulderUp: false,
-    },
-    long: {
-      select: false,
-      collarDown: false,
-    },
-    creative: {
-      select: false,
-    },
-  },
-  allOverColor: {
-    select: false,
-    rootsOnly: {
-      select: false,
-    },
-  },
-  highlights: {
-    select: false,
-    partial: {
-      select: false,
-    },
-    full: {
-      select: false,
-    },
-  },
-  balayage: {
-    select: false,
-    partial: {
-      select: false,
-    },
-    full: {
-      select: false,
-    },
-  },
-  vivids: {
-    select: false,
-    requireConsult: true,
-  },
-  colorCorrections: {
-    select: false,
-    requireConsult: true,
-  },
-  styling: {
-    select: false,
-    blowout: {
-      select: false,
-    },
-    specialEvent: {
-      select: false,
-      prom: {
-        select: false,
-      },
-      homeComing: {
-        select: false,
-      },
-      seniorPics: {
-        select: false,
-      },
-      formal: {
-        select: false,
-      },
-      bridal: {
-        select: false,
-        requireConsult: true,
-      },
-    },
-  },
-  extensions: {
-    select: false,
-    full: {
-      select: false,
-      requireConsult: true,
-    },
-    moveUp: {
-      select: false,
-    },
-    removal: {
-      select: false,
-    },
-  },
-  babyLights: {
-    select: false,
-    partial: {
-      select: false,
-    },
-    full: {
-      select: false,
-    },
-  },
-  bleachTone: {
-    select: false,
-    growOuts: {
-      select: false,
-      requireConsult: true,
-    },
-  },
-  quiet: {
-    select: false,
-  },
-};
-
-const serviceList = Object.keys(allServices);
+const options = Object.keys(allServices);
 
 const Dev = () => {
-  const [formData, setFormData] = useState(allServices);
+  const [formData, setFormData]: [any, any] = useState(allServices);
 
-  return <div className="container"></div>;
+  const toggle = (input: any) => {
+    const newData: any = { ...formData };
+    const name = input.dataset.name;
+    newData[name].select = !newData[name].select;
+    input.className = formData[name].select ? 'selected' : 'notSelected';
+    setFormData(newData);
+  };
+
+  return (
+    <div className="choices">
+      {options.map((type: any) => (
+        <div
+          id="choice"
+          className="notSelected"
+          key={type}
+          data-name={type}
+          onClick={(e) => toggle(e.target)}
+        >
+          {formData[type].name}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default Dev;

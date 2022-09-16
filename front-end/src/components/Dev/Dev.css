@@ -41,3 +41,32 @@ col: 9fr 1fr
 nav nav
 content content
 saveErrors save */
+
+#choice {
+  margin: 5px 5px;
+  padding: 10px;
+  border: black 2px solid;
+  border-radius: 10px;
+}
+
+.selected {
+  background-color: var(--secondary-light);
+}
+
+.notSelected {
+  background-color: var(--primary-dark);
+}
+
+.unselectable {
+  background-color: gray;
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 5px 5px;
+  padding: 10px;
+  border: black 2px solid;
+  border-radius: 10px;
+}
