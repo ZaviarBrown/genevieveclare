@@ -2,6 +2,7 @@ const allServices = {
   haircut: {
     name: 'Haircut',
     select: false,
+    rate: 60,
     bundleTime: 30,
     buzz: {
       select: false,
@@ -27,6 +28,7 @@ const allServices = {
   allOverColor: {
     name: 'All Over Color',
     select: false,
+    rate: 80,
     bundleTime: 30,
     glossTonerOnly: {
       select: false,
@@ -47,6 +49,7 @@ const allServices = {
   highlights: {
     name: 'Highlights',
     select: false,
+    rate: 95,
     partial: {
       select: false,
       time: 150,
@@ -62,6 +65,7 @@ const allServices = {
   balayage: {
     name: 'Balayage',
     select: false,
+    rate: 95,
     partial: {
       select: false,
       time: 180,
@@ -76,18 +80,21 @@ const allServices = {
   vivids: {
     name: 'Vivids',
     select: false,
+    rate: 110,
     price: 110,
     requireConsult: true,
   },
   colorCorrections: {
     name: 'Color Corrections',
     select: false,
+    rate: 130,
     price: 130,
     requireConsult: true,
   },
   styling: {
     name: 'Styling',
     select: false,
+    rate: 61,
     bundleTime: 60,
     blowout: {
       select: false,
@@ -107,6 +114,7 @@ const allServices = {
   extensions: {
     name: 'Extensions',
     select: false,
+    rate: 70,
     bundleTime: 30,
     full: {
       select: false,
@@ -119,12 +127,14 @@ const allServices = {
     },
     removal: {
       select: false,
-      price: 105,
+      time: 60,
+      price: 70,
     },
   },
   babyLights: {
     name: 'Baby Lights',
     select: false,
+    rate: 100,
     partial: {
       select: false,
       time: 210,
@@ -139,6 +149,7 @@ const allServices = {
   bleachTone: {
     name: 'Bleach & Tone',
     select: false,
+    rate: 85,
     halfInch: {
       select: false,
       time: 150,

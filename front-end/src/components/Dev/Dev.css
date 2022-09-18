@@ -42,7 +42,7 @@ nav nav
 content content
 saveErrors save */
 
-#choice {
+#option {
   margin: 5px 5px;
   padding: 10px;
   border: black 2px solid;
@@ -57,11 +57,11 @@ saveErrors save */
   background-color: var(--primary-dark);
 }
 
-.unselectable {
+.cantSelect {
   background-color: gray;
 }
 
-.choices {
+.services {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
