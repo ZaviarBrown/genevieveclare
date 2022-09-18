@@ -16,31 +16,21 @@ const Dev = () => {
   };
 
   const lightService = (input: any) => {
-    const lightArr = ['balayage', 'bleachTone', 'babyLights', 'highlights'];
     const name = input.dataset.name;
 
     if (input.className === 'cantSelect') return false;
 
-    if (lightArr.includes(name)) {
-      if (formData[name].select) {
-        lightArr.forEach((el) => {
-          if (el !== name) {
-            const curr = document.querySelector(`[data-name="${el}"]`);
-            if (curr) curr.className = 'notSelected';
-          }
-        });
+    if (formData[name].disable) {
+      formData[name].disable.forEach((el: string) => {
+        const curr = document.querySelector(`[data-name="${el}"]`);
+        if (curr)
+          formData[name].select
+            ? (curr.className = 'notSelected')
+            : (curr.className = 'cantSelect');
+        console.log('Hello everyone');
+      });
 
-        return true;
-      } else {
-        lightArr.forEach((el) => {
-          if (el !== name) {
-            const curr = document.querySelector(`[data-name="${el}"]`);
-            if (curr) curr.className = 'cantSelect';
-          }
-        });
-
-        return true;
-      }
+      return true;
     }
 
     return true;

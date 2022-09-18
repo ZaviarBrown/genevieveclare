@@ -39,6 +39,7 @@ const allServices = {
       select: false,
       time: 90,
       price: 80,
+      allow: true,
     },
     rootsToEnds: {
       select: false,
@@ -50,6 +51,7 @@ const allServices = {
     name: 'Highlights',
     select: false,
     rate: 95,
+    disable: ['balayage', 'bleachTone', 'babyLights', 'highlights'],
     partial: {
       select: false,
       time: 150,
@@ -66,6 +68,7 @@ const allServices = {
     name: 'Balayage',
     select: false,
     rate: 95,
+    disable: ['bleachTone', 'babyLights', 'highlights'],
     partial: {
       select: false,
       time: 180,
@@ -105,9 +108,11 @@ const allServices = {
       select: false,
       time: 90,
       price: [65, 90],
+      allow: true,
     },
     bridal: {
       select: false,
+      allow: true,
       requireConsult: true,
     },
   },
@@ -135,6 +140,7 @@ const allServices = {
     name: 'Baby Lights',
     select: false,
     rate: 100,
+    disable: ['balayage', 'bleachTone', 'highlights'],
     partial: {
       select: false,
       time: 210,
@@ -150,6 +156,7 @@ const allServices = {
     name: 'Bleach & Tone',
     select: false,
     rate: 85,
+    disable: ['balayage', 'allOverColor', 'babyLights', 'highlights'],
     halfInch: {
       select: false,
       time: 150,
