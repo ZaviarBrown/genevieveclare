@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { saveLocal, restoreLocal } from './utils';
+import { saveLocal, restoreLocal } from '../utils';
 import './Dev.css';
 
 interface HistoryProps {
@@ -42,7 +42,8 @@ const ColorHistory = (props: HistoryProps) => {
   useEffect(() => {
     let testData = { ...formData };
     testData.yes = false;
-    saveLocal(defaultState, testData, props.name);
+    console.log(testData.yes, formData.yes);
+    saveLocal(defaultState, testData, props.name, formData);
   }, [formData, props.name]);
 
   return (

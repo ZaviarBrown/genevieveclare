@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { restoreLocal, saveLocal } from './utils';
+import { restoreLocal, saveLocal } from '../utils';
 import './Dev.css';
 
 interface ChemProps {
@@ -34,7 +34,7 @@ const ChemHair = (props: ChemProps) => {
   useEffect(() => {
     let testData = { ...formData };
     testData.yes = false;
-    saveLocal(defaultState, testData, props.name);
+    saveLocal(defaultState, testData, props.name, formData);
   }, [formData, props.name]);
 
   return (

@@ -54,7 +54,7 @@ const FormCommander = (props: FCProps) => {
 
   const checkStorage = () => {
     const pageName = form[page].props.name;
-    // TODO ReadyCheck - yes: next page, no: first page
+    // TODO <ReadyCheck /> - yes: submit page, no: first/edit page
     if (form.length - 1 === page && localStorage[pageName]) setSubmit(true);
     if (localStorage[pageName]) changePages(1);
   };

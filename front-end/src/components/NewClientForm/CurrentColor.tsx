@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { restoreLocal, saveLocal } from './utils';
+import { restoreLocal, saveLocal } from '../utils';
 import './Dev.css';
 
 interface ColorProps {

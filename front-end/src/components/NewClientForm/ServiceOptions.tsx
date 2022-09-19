@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { saveLocal, restoreLocal } from './utils';
+import { saveLocal, restoreLocal } from '../utils';
 import './Dev.css';
 
 interface ServiceProps {

@@ -1,3 +1,16 @@
+//! Lightening Service[Balayage, Bleach and Tone, Baby Lights, Highlights] must disable each other
+//! All over color bundled only allows roots only
+
+/** Haircut, Color, Highlight
+ *
+ * Highest price point shown sub selections first - Highlight
+ * Choose full or partial
+ * Color shown next
+ * Only "roots only" available (Roots to Ends and Gloss/Toner disabled)
+ * Haircuts shown next
+ * All choices shown
+ */
+
 const allServices = {
   haircut: {
     name: 'Haircut',
@@ -189,17 +202,32 @@ const selections = (obj: any) => {
   return choices;
 };
 
-//! Lightening Service[Balayage, Bleach and Tone, Baby Lights, Highlights] must disable each other
-//! All over color bundled only allows roots only
+const hasChanged = (x: any, y: any) => {
+  for (const key in x) {
+    if (x[key] !== y[key]) {
+      return true;
+    }
+  }
+  return false;
+};
 
-/** Haircut, Color, Highlight
- *
- * Highest price point shown sub selections first - Highlight
- * Choose full or partial
- * Color shown next
- * Only "roots only" available (Roots to Ends and Gloss/Toner disabled)
- * Haircuts shown next
- * All choices shown
- */
+const saveLocal = (
+  defaultState: any,
+  newState: any,
+  name: string,
+  yesState: any = null
+) => {
+  if (hasChanged(defaultState, newState))
+    localStorage[name] = yesState
+      ? JSON.stringify(yesState)
+      : JSON.stringify(newState);
+  else localStorage.removeItem(name);
+};
 
-export { allServices, selections };
+const restoreLocal = (name: any, set: any) => {
+  if (localStorage[name]) {
+    set(JSON.parse(localStorage[name]));
+  }
+};
+
+export { allServices, selections, hasChanged, saveLocal, restoreLocal };

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './Dev.css';
-import { allServices, selections } from './utils';
+import { allServices, selections } from '../utils';
 
 const options = Object.keys(allServices);
 
