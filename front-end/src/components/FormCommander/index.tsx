@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import * as sessionActions from '../../store/session';
-import { connect } from 'react-redux';
+import * as noteActions from '../../store/note';
+import { connect, useDispatch } from 'react-redux';
 import { RootState, useAppDispatch } from '../../store/index';
 import './FormCommander.css';
 import {
@@ -13,6 +13,8 @@ import {
   Upload,
 } from '../NewClientForm';
 
+import { Services, Specifications } from '../AppointmentForm';
+
 const NewClient = [
   <ServiceOptions name="ServiceOptions" />,
   <ColorHistory name="ColorHistory" />,
@@ -23,16 +25,16 @@ const NewClient = [
   // <Upload name="Upload" />,
 ];
 
-// const Appointment = [
-//   // Services
-//   // Specifications
-//   // ReadyCheck
-//   // Calendar
-// ];
+const Appointment = [
+  <Services name="Services" />,
+  <Specifications name="Specifications" />,
+  // ReadyCheck
+  // Calendar
+];
 
 const forms: any = {
   NewClient,
-  // Appointment,
+  Appointment,
 };
 
 interface FCProps {
@@ -40,9 +42,15 @@ interface FCProps {
 }
 
 const FormCommander = (props: FCProps) => {
+  const dispatch = useAppDispatch();
   const [page, setPage] = useState(0);
   const [submit, setSubmit] = useState(false);
   const form = forms[props.name];
+
+  const submitForm = async () => {
+    const noteData = 'complex local storage thing';
+    await dispatch(noteActions.firstNote(noteData));
+  };
 
   const changePages = (num: number) => {
     if (num < 0) setSubmit(false);
@@ -76,7 +84,9 @@ const FormCommander = (props: FCProps) => {
 					Final page to handle submitting
 					Eventually will be an edit screen
 					 */}
-          <button className="arrow">Save</button>
+          <button className="arrow" onClick={submitForm}>
+            Save
+          </button>
         </div>
       ) : null}
     </div>

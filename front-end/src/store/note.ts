@@ -32,6 +32,7 @@ export const firstNote = (note: Note) => async (dispatch: any) => {
       currColor,
       bookDays,
     }),
+    // body: JSON.stringify(note)
   });
 
   const data = await response.json();
@@ -41,7 +42,7 @@ export const firstNote = (note: Note) => async (dispatch: any) => {
 
 const initialState = { note: null };
 
-const sessionReducer = (state = initialState, action: any) => {
+const noteReducer = (state = initialState, action: any) => {
   let newState;
 
   switch (action.type) {
@@ -49,7 +50,9 @@ const sessionReducer = (state = initialState, action: any) => {
       newState = { ...state };
       newState.note = action.payload;
       return newState;
+    default:
+      return state;
   }
 };
 
-export default sessionReducer;
+export default noteReducer;

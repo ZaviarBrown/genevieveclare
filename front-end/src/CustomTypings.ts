@@ -9,7 +9,7 @@ export interface User {
 }
 
 export interface Note {
-  id: number;
+  id?: number;
   userId: number;
   noteText: string;
   services: string;
