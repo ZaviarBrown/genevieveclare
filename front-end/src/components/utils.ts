@@ -64,7 +64,7 @@ const allServices = {
     name: 'Highlights',
     select: false,
     rate: 95,
-    disable: ['balayage', 'bleachTone', 'babyLights', 'highlights'],
+    disable: ['balayage', 'bleachTone', 'babyLights'],
     partial: {
       select: false,
       time: 150,
@@ -196,7 +196,7 @@ const selections = (obj: any) => {
   const choices = [];
 
   for (const service in obj) {
-    if (obj[service].select) choices.push(obj[service]);
+    if (obj[service].select) choices.push(service);
   }
 
   return choices;
@@ -215,13 +215,34 @@ const saveLocal = (
   defaultState: any,
   newState: any,
   name: string,
-  yesState: any = null
+  type: string | undefined = undefined
 ) => {
-  if (hasChanged(defaultState, newState))
-    localStorage[name] = yesState
-      ? JSON.stringify(yesState)
-      : JSON.stringify(newState);
-  else localStorage.removeItem(name);
+  switch (type) {
+    case 'yes':
+      defaultState.yes = true;
+      newState.no
+        ? (localStorage[name] = JSON.stringify(newState))
+        : newState.yes && hasChanged(defaultState, newState)
+        ? (localStorage[name] = JSON.stringify(newState))
+        : localStorage.removeItem(name);
+      break;
+    case 'other':
+      hasChanged(defaultState, newState)
+        ? newState.other && newState.input === ''
+          ? localStorage.removeItem(name)
+          : (localStorage[name] = JSON.stringify(newState))
+        : localStorage.removeItem(name);
+      break;
+    case 'service':
+      !newState.length
+        ? localStorage.removeItem(name)
+        : (localStorage[name] = JSON.stringify(newState));
+      break;
+    default:
+      hasChanged(defaultState, newState)
+        ? (localStorage[name] = JSON.stringify(newState))
+        : localStorage.removeItem(name);
+  }
 };
 
 const restoreLocal = (name: any, set: any) => {

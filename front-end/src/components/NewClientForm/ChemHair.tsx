@@ -32,9 +32,7 @@ const ChemHair = (props: ChemProps) => {
   useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
 
   useEffect(() => {
-    let testData = { ...formData };
-    testData.yes = false;
-    saveLocal(defaultState, testData, props.name, formData);
+    saveLocal(defaultState, formData, props.name, 'yes');
   }, [formData, props.name]);
 
   return (

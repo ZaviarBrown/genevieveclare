@@ -9,6 +9,7 @@ import SignupForm from './components/SignupForm';
 import MainCalendar from './components/MainCalendar';
 import { User } from './CustomTypings';
 import Dev from './components/Dev';
+import FormCommander from './components/FormCommander';
 
 function App() {
   const dispatch = useAppDispatch();
@@ -40,6 +41,9 @@ function App() {
           </Route>
           <Route exact path="/dev">
             <Dev />
+          </Route>
+          <Route exact path="/appointment">
+            <FormCommander name="Appointment" />
           </Route>
         </Switch>
       )}

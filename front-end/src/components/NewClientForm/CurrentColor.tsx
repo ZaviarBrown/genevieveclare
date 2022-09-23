@@ -39,11 +39,7 @@ const CurrentColor = (props: ColorProps) => {
   useEffect(() => restoreLocal(props.name, setFormData), [props.name]);
 
   useEffect(() => {
-    let testData = { ...formData };
-    if (formData.other && formData.input === '') {
-      testData = { ...defaultState };
-    }
-    saveLocal(defaultState, testData, props.name);
+    saveLocal(defaultState, formData, props.name, 'other');
   }, [formData, props.name]);
 
   return (
