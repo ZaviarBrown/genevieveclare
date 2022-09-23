@@ -1,9 +1,12 @@
-const router = require('express').Router();
-const sessionRouter = require('./session.ts');
-const usersRouter = require('./users.ts');
+const router = require("express").Router();
+const sessionRouter = require("./session.ts");
+const usersRouter = require("./users.ts");
+const appointmentRouter = require("./appointments.ts");
 
-router.use('/session', sessionRouter);
+router.use("/appointments", appointmentRouter);
 
-router.use('/users', usersRouter);
+router.use("/session", sessionRouter);
+
+router.use("/users", usersRouter);
 
 module.exports = router;

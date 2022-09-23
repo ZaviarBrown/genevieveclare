@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 import { RootState, useAppDispatch } from '../../store/index';
 import { User } from '../../CustomTypings';
 import './SignupForm.css';
+import { Navigate } from "react-router";
 
 const SignupForm = ({ user }: { user: User | null }) => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,7 @@ const SignupForm = ({ user }: { user: User | null }) => {
   const [errors, setErrors] = useState([] as string[]);
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Navigate replace to="/" />;
   }
 
   const handleSubmit = (e: any) => {

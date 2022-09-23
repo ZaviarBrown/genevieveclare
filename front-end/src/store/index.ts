@@ -4,10 +4,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch } from 'react-redux';
 import { logger } from 'redux-logger';
 import noteReducer from './note';
+import appointmentReducer from "./appointments";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   note: noteReducer,
+  appointments: appointmentReducer,
 });
 
 export const store = configureStore({
