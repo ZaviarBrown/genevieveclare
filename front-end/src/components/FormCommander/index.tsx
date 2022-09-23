@@ -48,8 +48,8 @@ const FormCommander = (props: FCProps) => {
   const form = forms[props.name];
 
   const submitForm = async () => {
-    const noteData = 'complex local storage thing';
-    await dispatch(noteActions.firstNote(noteData));
+    // const noteData = 'complex local storage thing';
+    // await dispatch(noteActions.firstNote(noteData));
   };
 
   const changePages = (num: number) => {
