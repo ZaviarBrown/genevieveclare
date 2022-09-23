@@ -11,6 +11,9 @@ interface Props {
 }
 
 const Navigation = ({ isLoaded, user }: Props) => {
+  
+  // hi z
+
   return (
     <div className="NavCont">
       {isLoaded && (
