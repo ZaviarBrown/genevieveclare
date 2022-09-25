@@ -7,6 +7,7 @@ module.exports = {
       'Users',
       [
         {
+          id: 1,
           email: 'demo@user.io',
           firstName: 'Demo',
           lastName: 'User',
@@ -16,6 +17,7 @@ module.exports = {
           firstTime: false,
         },
         {
+          id: 2,
           email: 'geni@user.io',
           firstName: 'Geni',
           lastName: 'Admin',
