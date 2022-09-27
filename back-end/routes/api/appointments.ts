@@ -1,13 +1,13 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-const express = require("express");
-const asyncHandler = require("express-async-handler");
-const { Appointment, User } = require("../../db/models");
+const express = require('express');
+const asyncHandler = require('express-async-handler');
+const { Appointment, User } = require('../../db/models');
 
 const router = express.Router();
 
 router.get(
-    "/",
+    '/',
     asyncHandler(async (req: Request, res: Response) => {
         const appointments = await Appointment.findAll();
 
@@ -16,18 +16,15 @@ router.get(
 );
 
 router.get(
-    "/:email",
+    '/:email',
     asyncHandler(async (req: Request, res: Response) => {
         const { email } = req.params;
 
-        const user = await User.findOne({
-            where: { email },
-        });
-
-        console.log(user, "ID", user.id);
-
         const appointments = await Appointment.findAll({
-            where: { userId: user.id },
+            include: {
+                model: User,
+                where: { email },
+            },
         });
 
         return res.json({ appointments });
