@@ -271,3 +271,115 @@ const restoreLocal = (name: any, set: any) => {
 
 export { allServices, selections, hasChanged, saveLocal, restoreLocal };
 
+// const toggle = (input: any) => {
+// 	// * Toggles between true/false & selected/notSelected
+
+// 	const newData: any = { ...formData };
+// 	const name = input.dataset.name;
+
+// 	newData[name] = !newData[name];
+// 	input.className = newData[name] ? 'selected' : 'notSelected';
+
+// 	setFormData(newData);
+// };
+
+// const disableToggle = () => {
+// 	/** Disable further selections if we have 3 choices, excluding "quiet"
+// 	 * If before toggle,
+// 	 */
+// };
+
+// const lightService = (input: any) => {
+// 	/**
+// 	 * * return true: toggle runs
+// 	 * * return false: toggle doesn't run, prevents gray options from being selected
+// 	 */
+
+// 	const name = input.dataset.name;
+
+// 	if (input.className === 'cantSelect') return false;
+
+// 	const newData = { ...formData };
+
+// 	// * If "disable" array exists, gray out those options
+// 	if (allServices[name].disable) {
+// 		allServices[name].disable.forEach((el: string) => {
+// 			/**
+// 			 * * "name" === user's selection, "el" & "curr" === "disable" array value
+// 			 *
+// 			 * * If deselecting, newData[name] is true, changing to false in "toggle"
+// 			 * * Allow user to select disabled elements
+// 			 *
+// 			 * * If selecting, newData[name] is false, changing to true in "toggle"
+// 			 * * Gray out disabled elements so user can't select
+// 			 *
+// 			 * * Either way, set newData[el] to false
+// 			 */
+
+// 			const curr = document.querySelector(`[data-name="${el}"]`);
+
+// 			if (curr) {
+// 				newData[el] = false;
+// 				newData[name]
+// 					? (curr.className = 'notSelected') //? enable
+// 					: (curr.className = 'cantSelect'); //? disable
+// 			}
+// 		});
+
+// 		setFormData(newData);
+// 	}
+
+// 	return true;
+// };
+
+// useEffect(() =>{
+// const exception = choices.filter(
+//     (el: string) => allServices[el].disable
+// )[0];
+
+// const values: any = exception.length
+//     ? allServices[exception].disable
+//     : [];
+
+// const onOrOff =
+//     (choices.length >= 3 && !choices.includes('quiet')) ||
+//     choices.length >= 4;
+
+// options.forEach((el: string) => {
+//     if (
+//         !choices.includes(el) &&
+//         !values.includes(el) &&
+//         el !== 'quiet'
+//     ) {
+//         const curr = document.querySelector(`[data-name="${el}"]`);
+//         if (curr)
+//             onOrOff
+//                 ? (curr.className = 'cantSelect')
+//                 : (curr.className = 'notSelected');
+//     }
+// });
+
+// }, [formData, choices]);
+
+// useEffect(() => {
+//     if (localStorage[props.name]) {
+//         const newData = { ...formData };
+//         const storedChoices = [];
+//         for (const choice of JSON.parse(localStorage[props.name])) {
+//             const curr = document.querySelector(`[data-name="${choice}"]`);
+
+//             newData[choice].select = false;
+//             if (newData[choice].disable) lightService(curr);
+//             newData[choice].select = true;
+//             if (curr) curr.className = 'selected';
+
+//             storedChoices.push(choice);
+//         }
+//         setFormData(newData);
+//         setChoices(storedChoices);
+//     }
+// }, []);
+
+// useEffect(() => {
+//     saveLocal(allServices, choices, props.name, 'service');
+// }, [choices, props.name]);
