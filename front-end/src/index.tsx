@@ -1,15 +1,15 @@
-import React from "react";
-import "./index.css";
-import App from "./App";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import { store } from "./store/index";
-import { restoreCSRF, csrfFetch } from "./store/csrf";
-import * as sessionActions from "./store/session";
-import * as ReactDOM from "react-dom/client";
+import React from 'react';
+import './index.css';
+import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store/index';
+import { restoreCSRF, csrfFetch } from './store/csrf';
+import * as sessionActions from './store/session';
+import * as ReactDOM from 'react-dom/client';
 
 // TODO: Remove this line - development only
-const tab = window.location.href.split("/");
+const tab = window.location.href.split('/');
 document.title = tab[tab.length - 1];
 
 declare global {
@@ -21,7 +21,7 @@ declare global {
     }
 }
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
     restoreCSRF();
 
     window.csrfFetch = csrfFetch;
@@ -39,7 +39,9 @@ function Root() {
     );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+    document.getElementById('root') as HTMLElement
+);
 
 root.render(
     <React.StrictMode>
